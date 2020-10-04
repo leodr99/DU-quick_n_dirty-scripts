@@ -32,7 +32,6 @@
      Then, put an extra line on the tick/timer filter, with the correct display slot name, and the worker/slave board ID, and you shoul'd be golden.
 
      ]]
-
 --// the "magic" starts here...
 --
 if display then
@@ -119,11 +118,11 @@ end
 --
 
 --runtime
-unit.setTimer("screen1", refresh)
+unit.setTimer("screens", refresh)
 
 
 
---[[ insert into unit>>tick(screen1) filter]]
+--[[ insert into unit>>tick("screens") filter]]
 --
 display.setHTML(renderHTML("PB1"))
 
