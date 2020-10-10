@@ -1,3 +1,13 @@
+
+--[[
+    Setup:
+        Connect a display, and name the slot it connects to, to "display"
+        load the code onto the appropriate sections ( unit>>start() and unit>>tick(time) )
+        edit the lua parameters (right.click>>advanced>>edit lua parameters)
+        activate the board. presto!
+    ]]
+
+
 --[[ drop it into unit>>start() event/filter]]
 --
 --Globals
