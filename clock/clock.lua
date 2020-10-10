@@ -7,7 +7,10 @@
         activate the board. presto!
     ]]
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 --[[ drop it into unit>>start() event/filter]]
 --
 --Globals
@@ -45,7 +48,7 @@ function epochTime()
             return false
         end
     end
---    
+    
     local timeStampDayOfWeak = 5
     local secondsInHour = 3600
     local secondsInDay = 86400
@@ -225,7 +228,7 @@ function epochTime()
         minute = rZ(minute)
         second = rZ(second)
         remanderForDOW = daysSinceEpoch % 7
-        DOW = DOWAssociates[remanderForDOW + 1]
+        DOW = DOWAssociates[remanderForDOW]
     
         if(outputTime) then
             str = "Year: " .. year .. ", Month: " .. month .. ", Day: " .. day .. ", Hour: " .. hour .. ", Minute: " .. minute .. ", Second: ".. second .. ", Day of Week: " .. DOW
@@ -244,14 +247,50 @@ unit.setTimer("time", 5)
 --
 --//runtime
 local year, month, day, hour, minute, second, dow = epochTime()
-local html2display = [[
+local htmlStyle = [[
+<style>
+body {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-family: 'Candara';
+}
+
+.neons {
+   margin-top: 6rem;
+   text-align: center;
+}
+
+.neons h1 {
+  font-size: 20rem;
+  text-align: center;
+   font-weight: bold;
+  -webkit-animation: glow 2s ease-in-out infinite alternate;
+  -moz-animation: glow 2s ease-in-out infinite alternate;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+     from {
+      color: #fff;
+    text-shadow: 0 0 10px #FF001E, 0 0 20px #FF001E, 0 0 30px #ff001e, 0 0 40px #ff001e, 0 0 50px #ff001e, 0 0 60px #ff001e, 0 0 70px #ff001e, 0 0 90px #ff001e;
+  }
+  
+  to {
+     color: gray;
+    text-shadow: 0 0 20px #ff001e, 0 0 30px #ff001e, 0 0 40px #ff001e, 0 0 50px #ff001e, 0 0 60px #ff001e, 0 0 70px #ff001e, 0 0 80px #ff001e, 0 1 90px #ff001e;
+  }
+}
+</style>
+]]
+local html2display = htmlStyle .. [[
 <div class="clockworks" style="margin-top: 6rem; color: white; justify-content: center; text-align: center;">
-  <div class="timeTitle" style="color: red; font-size: 22rem; !important; justify-content: center; text-align: center;">
-    ALIOTH
+  <div class="neons col-12" style="text-align: center;">
+    <h1>ALIOTH<h1>
   </div>
 <div class="clockTable">
 <table style="margin-left: auto; margin-right: auto; width: 95%; font-size: 18rem;">
-<tr><th>]].. day .."/".. month .."/".. year ..[[</th></tr>
+<tr style="font-size: 14rem;"><th>]].. dow .. day .."/".. month .."/".. year ..[[</th></tr>
 <tr><th><table style="margin-left: auto; margin-right: auto; font-size: 18rem;">
 <tr><th>]].. hour ..":</th><th>".. minute .."</th></tr></table></table></div></div>"
 
