@@ -7,15 +7,12 @@
         activate the board. presto!
     ]]
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 --[[ drop it into unit>>start() event/filter]]
 --
 --Globals
 local outputTime = false --export: for debug purposes, it prints on the console the extended time.
 local _refresh = 5 --export: timer timeout (runs at every # seconds)
+local summertime = false --export: summer time enabled
 --
 --//functions
 function epochTime()
@@ -63,8 +60,9 @@ function epochTime()
     local daysSinceEpoch = 0
     local duEpochOffset = 1506816000 --(Oct. 1, 2017, at 00:00) //1506729600
     local DOWAssociates = {"Tur,", "Fri,", "Sat,", "Sun,", "Mon,", "Tue,", "Wed,"}
-    
-        now = math.floor(system.getTime() + duEpochOffset)
+    local getTime = system.getTime()
+    if summertime == true then getTime = getTime + 3600 end
+        now = math.floor(getTime + duEpochOffset)
         year = 1970 --the original epoch time (1/1/1970), in order to match DU's epoch offset.
         secs = 0
         daysSinceEpoch = 0
